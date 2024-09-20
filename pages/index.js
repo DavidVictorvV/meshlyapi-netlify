@@ -15,7 +15,9 @@ export default function Home() {
         <p className="description">
         Access api at: "/.netlify/functions/api"
         "/create-task"
+        "/create-texture-task"
         "/get-task"
+        "/get-texture-task"
         </p>
       </main>
 
