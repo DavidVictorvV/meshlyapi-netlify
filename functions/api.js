@@ -30,7 +30,7 @@ router.post('/create-task', async (req, res) => {
 });
 
 
-app.post('/create-texture-task', async (req, res) => {
+router.post('/create-texture-task', async (req, res) => {
     console.log(req.body.prompt);
 
     try {
@@ -68,7 +68,7 @@ router.get('/get-task/:id', async (req, res) => {
     }
 });
 
-app.get('/get-texture-task/:id', async (req, res) => {
+router.get('/get-texture-task/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const response = await axios.get(`https://api.meshy.ai/v1/text-to-texture/${id}`, {
