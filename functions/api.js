@@ -53,7 +53,7 @@ router.post('/create-texture-task', async (req, res) => {
         res.json(response.data);
     } catch (error) {
         console.error('Error response:', error.response ? error.response.data : error.message);
-        res.status(500).json({ message: 'Failed to create texture task, reason: ' + (error.response ? error.response.data : error.message)  +payload});
+        res.status(500).json({ message: 'Failed to create texture task, reason: ' + JSON.stringify(error.response ? error.response.data : error) + JSON.stringify(payload)});
     }
 });
 
