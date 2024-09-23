@@ -36,8 +36,8 @@ router.post('/create-texture-task', async (req, res) => {
             "model_url":req.body.model_url,
             "object_prompt": req.body.object_prompt,
             "style_prompt": req.body.style_prompt || "realistic",
-            "enable_original_uv":req.body.art_style || "realistic" ,
-            "enable_pbr": true,
+            "enable_original_uv": req.body.enable_original_uv !== undefined ? req.body.enable_original_uv : true,
+            "enable_pbr": req.body.enable_pbr !== undefined ? req.body.enable_pbr : true,
             "resolution": req.body.resolution || "2048",
           }, {
             headers: { 'Authorization': `Bearer ${process.env.MESHY_API_KEY}` }
