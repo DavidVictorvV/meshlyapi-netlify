@@ -31,11 +31,6 @@ router.post('/create-task', async (req, res) => {
 
 
 router.post('/create-texture-task', async (req, res) => {
-    console.log(req.body.prompt);
-
-
-    console.log('Payload:', payload); // Log the payload for debugging
-
     try {
         const response = await axios.post('https://api.meshy.ai/v1/text-to-texture', {
             "model_url": "https://cdn.meshy.ai/model/example_model_2.glb",
