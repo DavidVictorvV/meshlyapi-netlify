@@ -12,8 +12,6 @@ const router = express.Router();
 
 
 router.post('/create-task', async (req, res) => {
-    console.log(req.body.prompt)
-
     try {
             const response = await axios.post('https://api.meshy.ai/v2/text-to-3d', JSON.stringify({ 
                 mode: "preview",
@@ -25,7 +23,7 @@ router.post('/create-task', async (req, res) => {
             res.json(response.data);
           } catch (error) {
             console.error('Error creating task:', error);
-            res.status(500).json({ message: 'Failed to create task' });
+            res.status(500).json({ message: 'Failed to create task, reason: ' + JSON.stringify(error.response ? error.response.data : error)});
           }
 });
 
