@@ -33,13 +33,12 @@ router.post('/create-task', async (req, res) => {
 router.post('/create-texture-task', async (req, res) => {
     try {
         const response = await axios.post('https://api.meshy.ai/v1/text-to-texture', {
-            "model_url": "https://cdn.meshy.ai/model/example_model_2.glb",
-            "object_prompt": "a monster mask",
-            "style_prompt": "red fangs, Samurai outfit that fused with japanese batik style",
-            "enable_original_uv": true,
-            "enable_pbr": true,
-            "resolution": "1024",
-            "negative_prompt": "low quality, low resolution, low poly, ugly"
+            "model_url":req.body.model_url,
+            "object_prompt": req.body.object_prompt,
+            "style_prompt": req.body.style_prompt || "realistic",
+            "enable_original_uv":req.body.art_style || "realistic" ,
+            "enable_pbr": req.body.enable_pbr !== undefined ? req.body.enable_pbr : true,
+            "resolution": req.body.resolution || "2048",
           }, {
             headers: { 'Authorization': `Bearer ${process.env.MESHY_API_KEY}` }
         });
